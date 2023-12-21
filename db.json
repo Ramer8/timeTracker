@@ -1,0 +1,90 @@
+{
+  "data": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "workCheckTypeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "employee": {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "firstName": "Lucas",
+      "lastName": "García",
+      "email": "user@example.com",
+      "workStatus": "online",
+      "imageProfileURL": "https://sesame-v2-prod-companies.s3.eu-west-3.amazonaws.com/48351485-1659-413d-bf7f-3ca34fadb521/public-read/g892f1fb-55a3-4e32-9cc9-7c19faa70gaa.png",
+      "code": 1,
+      "pin": 1000,
+      "phone": "+34 111 11 11 11",
+      "company": {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "name": "string",
+        "notificationEmail": "user@example.com",
+        "language": "string",
+        "createdAt": "2020-01-01T10:00:00+01:00",
+        "updatedAt": "2020-01-01T10:00:00+01:00"
+      },
+      "gender": "female",
+      "contractId": "string",
+      "nid": "string",
+      "identityNumberType": "dni",
+      "ssn": "string",
+      "pricePerHour": 0,
+      "accountNumber": "string",
+      "dateOfBirth": "2023-12-19",
+      "customFields": [
+        {
+          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "companyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "name": "string",
+          "slug": "string",
+          "type": "string",
+          "value": "string"
+        }
+      ],
+      "createdAt": "2020-01-01T10:00:00+01:00",
+      "updatedAt": "2020-01-01T10:00:00+01:00",
+      "status": "active",
+      "children": 2,
+      "disability": 25,
+      "address": "string",
+      "postalCode": "string",
+      "city": "string",
+      "province": "string",
+      "country": "string",
+      "nationality": "string",
+      "personalMail": "user@example.com",
+      "maritalStatus": "string",
+      "emergencyPhone": "string",
+      "description": "string",
+      "salaryRange": "string",
+      "studyLevel": "string",
+      "professionalCategoryCode": "string",
+      "professionalCategoryDescription": "string",
+      "bic": "string"
+    },
+    "workEntryType": "string",
+    "workEntryIn": {
+      "origin": "string",
+      "date": "2020-01-01T10:00:00+01:00",
+      "coordinates": {
+        "latitude": 0,
+        "longitude": 0
+      }
+    },
+    "workEntryOut": {
+      "origin": "string",
+      "date": "2020-01-01T10:00:00+01:00",
+      "coordinates": {
+        "latitude": 0,
+        "longitude": 0
+      }
+    },
+    "workedSeconds": 0,
+    "createdAt": "2020-01-01T10:00:00+01:00",
+    "updatedAt": "2020-01-01T10:00:00+01:00",
+    "deletedAt": "2020-01-01T10:00:00+01:00"
+  },
+  "meta": {
+    "currentPage": 1,
+    "lastPage": 1,
+    "total": 1,
+    "perPage": 1
+  }
+}

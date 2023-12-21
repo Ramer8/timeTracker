@@ -1,0 +1,6 @@
+{
+    "ignorePatterns": ["vite.config.js"],
+    "rules": {
+        //...
+    }
+}
