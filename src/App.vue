@@ -1,10 +1,10 @@
 <template>
-  <div class="p-6 bg-color: bg-gray-800 text-gray-700 h-screen">
+  <div class="p-3 bg-color: bg-gray-800 text-gray-700 h-screen">
     <ShowData
       v-if="info"
       :info="info"
       :newData="newData"
-      class="flex gap-2 bg-gray-300 text-gray-900 font-bold rounded-full sm:w-fit text-center p-4"
+      class="flex gap-2 bg-gray-300 text-gray-900 font-semibold rounded-full w-fit text-center p-2"
     ></ShowData>
 
     <button class="bg-gray-400 hover:bg-blue-300 px-2 py-1 m-2 rounded-full" @click="getData">

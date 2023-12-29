@@ -1,15 +1,13 @@
 <template>
-  <div class="container">
-    <div className="container mx-auto mt-3 text-center text-base text-gray-600">
+  <div>
+    <div className="container mx-auto px-3 mt-3 text-center text-base text-gray-600">
       {{
         `${formatDigit(new Date(info.data.workEntryIn.date).getHours())}:${formatDigit(
           new Date(info.data.workEntryIn.date).getMinutes()
-        )}:${formatDigit(new Date(info.data.workEntryIn.date).getSeconds())}
-  `
+        )}:${formatDigit(new Date(info.data.workEntryIn.date).getSeconds())}`
       }}
     </div>
     <Timer
-      class="mx-auto mt-1 text-center"
       v-if="state === 'online'"
       :workedTime="info.data.workEntryIn.date"
     />
@@ -24,18 +22,15 @@
     </button>
     <div class="container mt-1">
       <img
-        class="h-10 mx-auto object-cover rounded-full w-10"
-        width="50"
-        height="30"
-        src="/profilemanpic.jpeg"
-      />
-      <button
-        :class="[
-          state === 'online' ? 'bg-green-500' : 'bg-red-400',
-          'absolute rounded-full w-3 h-3 -my-6 mx-3'
-        ]"
-        @click="changeState"
-      ></button>
+          class="h-10 object-cover rounded-full w-10 container"
+          src="/profilemanpic.jpeg"
+        />
+          <button
+          :class="[
+            state === 'online' ? 'bg-green-500' : 'bg-red-400',
+            'absolute rounded-full w-3 h-3 -my-6 mx-3 cursor-none'
+          ]"
+        ></button>
     </div>
     <Dropdowns class="container mx-auto mt-1 text-center"
       >{{ info.data.employee.firstName }}<span></span> {{ info.data.employee.lastName }}</Dropdowns
