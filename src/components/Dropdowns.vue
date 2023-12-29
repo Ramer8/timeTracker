@@ -45,7 +45,7 @@
                       <a
                         href="#"
                         :class="[
-                          active ? 'bg-gray-100 text-gray-900 ' : 'text-gray-700',
+                          active ? 'bg-green-100 text-gray-900 ' : 'text-gray-700',
                           'block px-4 py-2 text-sm'
                         ]"
                         ><button class="rounded-full bg-gray-300 w-7 h-7 ring-1 ring-gray-400">
@@ -60,7 +60,7 @@
                       <a
                         href="#"
                         :class="[
-                          active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                          active ? 'bg-green-100 text-gray-900' : 'text-gray-700',
                           'block px-4 py-2 text-sm rounded-lg'
                         ]"
                         ><button class="rounded-full bg-gray-300 w-7 h-7 ring-1 ring-gray-400">
@@ -105,7 +105,7 @@
                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                 'block px-4 py-2 text-sm'
               ]"
-              >Cerrar</a
+              >Cerrar sesión</a
             >
           </MenuItem>
         </div>
