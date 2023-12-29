@@ -1,5 +1,5 @@
 <template>
-  <body className="container mx-auto mt-1 my-0">
+  <body className="container -ml-2 mt-1 my-0 mx-auto">
     <div className="h-auto flex flex-row">
       <div class="text-gray-400 mt-2 flex mr-2">
         <div class="mr-2">/</div>
@@ -18,10 +18,6 @@
 import MyButton from './MyButton.vue';
 
 export default {
-  name: 'Timer',
-  props: {
-    workedTime: String
-  },
   components: {
     MyButton
   },
@@ -39,48 +35,23 @@ export default {
       var seconds = valor % 60;
       return `${this.formatDigit(hours)}:${this.formatDigit(minutes)}:${this.formatDigit(seconds)}`;
     },
-    // getTime() {
-    //   let time = new Date(this.workedTime);
-    //   let timeHours = time.getHours();
-    //   let timeMinutes = time.getMinutes();
-    //   let timeSeconds = time.getSeconds();
-    //   let TotalInSeconds = parseInt(timeHours * 3600) + parseInt(timeMinutes * 60) + timeSeconds;
-    //   return TotalInSeconds;
-    // }
   },
   methods: {
     formatDigit(value) {
-      // Add leading zero if the value is less than 10
       return value < 10 ? `0${value}` : value;
     },
 
-    start() {
-      // let time = new Date(this.workedTime);
-      // let timeHours = time.getHours();
-      // let timeMinutes = time.getMinutes();
-      // let timeSeconds = time.getSeconds();
-      // let TotalInSeconds = parseInt(timeHours * 3600) + parseInt(timeMinutes * 60) + timeSeconds;
-      // this.counter = TotalInSeconds;
-     
+    start() {     
       if (this.interval) return this.stop();
       this.interval = setInterval(() => {
         this.counter = this.counter + 1;
-      }, 1000);
-      // if (this.interval) return this.stop();
-      // this.interval = setInterval(() => {
-      //   this.counter = this.counter + 1;
-      // }, 1000);
+      }, 1000);;
     },
     stop() {
       if (this.interval) clearInterval(this.interval);
       this.interval = null;
     },
-    saveTimer() {
-      const elapsedTime = this.counter;
-    },
-
     clear() {
-      // reinicia cuenta
       this.stop();
       this.counter = 0;
     }

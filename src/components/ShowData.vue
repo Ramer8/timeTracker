@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <div className="container mx-auto px-3 mt-3 text-center text-base text-gray-600">
       {{
         `${formatDigit(new Date(info.data.workEntryIn.date).getHours())}:${formatDigit(
