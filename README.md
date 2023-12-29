@@ -27,7 +27,10 @@ npm run dev
 ```sh
 npm run build
 ```
-
+### To Run Local Server 
+```sh
+json-server --watch db.json (use port 3000 by default)
+```
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
