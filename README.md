@@ -22,6 +22,11 @@ npm install
 npm run dev
 ```
 
+### To Run Local Server (use port 3000 by default)
+```sh
+json-server --watch db.json 
+```
+
 ### Compile and Minify for Production
 
 ```sh
