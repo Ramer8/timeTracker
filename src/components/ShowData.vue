@@ -1,35 +1,77 @@
 <template>
-  <div class=" flex gap-2  bg-gray-300 text-gray-900 font-bold rounded-full lg:w-1/2 sm:w-fit text-center p-4">
-     <div >
-       {{ info.data.workEntryIn.date.slice(11, -6) }} 
-     </div>
-      <button class=" bg-green-600 rounded-full  font-medium w-32 text-white px-2 py-1">Entar</button>
-     | 
-     <img class='h-10 mx-auto object-cover rounded-full w-10'
-     width='50' height="30" src="/Users/ramirop/Documents/js/timeTracker/public/profilemanpic.jpeg" >
-       <div  class="flex w-1/3 bg-gray-300 ">
-         {{ info.data.employee.firstName }}
-         {{ info.data.employee.lastName }}
-       </div>
- </div>
- 
+  <div class="container">
+    <div className="container mx-auto mt-3 text-center text-base text-gray-600">
+      {{
+        `${formatDigit(new Date(info.data.workEntryIn.date).getHours())}:${formatDigit(
+          new Date(info.data.workEntryIn.date).getMinutes()
+        )}:${formatDigit(new Date(info.data.workEntryIn.date).getSeconds())}
+  `
+      }}
+    </div>
+    <Timer
+      class="mx-auto mt-1 text-center"
+      v-if="state === 'online'"
+      :workedTime="info.data.workEntryIn.date"
+    />
+    <button
+      @click="changeState"
+      :class="[
+        state === 'online' ? 'bg-orange-500' : 'bg-green-500 ',
+        'rounded-full w-auto hover:text-gray-800 text-white px-12 py-1 mt-1'
+      ]"
+    >
+      <slot>{{ state === 'online' ? 'Salir' : 'Entrar' }}</slot>
+    </button>
+    <div class="container mt-1">
+      <img
+        class="h-10 mx-auto object-cover rounded-full w-10"
+        width="50"
+        height="30"
+        src="/profilemanpic.jpeg"
+      />
+      <button
+        :class="[
+          state === 'online' ? 'bg-green-500' : 'bg-red-400',
+          'absolute rounded-full w-3 h-3 -my-6 mx-3'
+        ]"
+        @click="changeState"
+      ></button>
+    </div>
+    <Dropdowns class="container mx-auto mt-1 text-center"
+      >{{ info.data.employee.firstName }}<span></span> {{ info.data.employee.lastName }}</Dropdowns
+    >
+  </div>
 </template>
 <script>
+import Dropdowns from './Dropdowns.vue';
+import MyButton from './MyButton.vue';
+import Timer from './Timer.vue';
 export default {
   data() {
     return {
       newDate: '',
+      state: 'online'
     };
   },
-props: {
-  info: Object,
+  components: { Dropdowns, MyButton, Timer },
+  props: {
+    info: Object,
+    workedTime: String
   },
-  methods:{
-    splitDate(date) {
-     newDate =  date.slice(11, -6)
-console.log(newDate);
+  methods: {
+    changeState() {
+      if (this.state === 'online') {
+        this.state = 'offline';
+      } else {
+        this.state = 'online';
+      }
+      return console.log(this.state);
+    },
+    formatDigit(value) {
+      // Add leading zero if the value is less than 10
+      return value < 10 ? `0${value}` : value;
     }
   }
-}
+};
 </script>
 <style></style>
