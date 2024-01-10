@@ -6,55 +6,74 @@
         {{ formattedTime }}</div>
       <button
         class="bg-gray-400 mx-1 hover:text-gray-800 rounded-full w-32 text-white px-4 py-2"
-        @click="start"
+        @click="$emit('togglePause')"
       >
-        Pausar
+       {{ isPaused ? 'Resume' : 'Pause' }}
       </button>
     </div>
   </body>
 </template>
 
 <script>
-import MyButton from './MyButton.vue';
+// import MyButton from './MyButton.vue';
 
 export default {
-  components: {
-    MyButton
-  },
+  // components: {
+  //   MyButton,
+  // },
   data() {
     return {
-       counter: 0,
-      interval: null,
+      isPausedTimer: '',
     };
+  },
+  emits: ['startTimer', 'togglePause'],
+  props: {
+    initialTime: Number,
+    currentTime: Number,
+    timerInterval: Number,
+    isPaused: Boolean,
   },
   computed: {
     formattedTime() {
-      const valor = this.counter;
-      var hours = Math.floor(valor / 3600);
-      var minutes = Math.floor((valor / 60) % 60);
-      var seconds = valor % 60;
+      const hours = Math.floor(this.currentTime / 3600);
+      const minutes = Math.floor(this.currentTime / 60);
+      const seconds = this.currentTime % 60;
+
       return `${this.formatDigit(hours)}:${this.formatDigit(minutes)}:${this.formatDigit(seconds)}`;
     },
   },
+  mounted() {
+    this.startTimer();
+  },
   methods: {
+    startTimer() {
+      this.$emit('startTimer');
+    },
+    togglePause() {
+      this.$emit('togglePause');
+    },
+    // startTimer() {
+    //   if (!this.initialTime == 0) {
+    //     this.currentTime = this.initialTime;
+    //     console.log('es distinto');
+    //     console.log(this.currentTime);
+    //   }
+    //   this.timerInterval = setInterval(() => {
+    //     if (!this.isPaused) {
+    //       this.currentTime++;
+    //     }
+    //   }, 1000);
+    // },
+    // togglePause() {
+    //   this.isPaused = !this.isPaused;
+    // },
     formatDigit(value) {
       return value < 10 ? `0${value}` : value;
     },
-
-    start() {     
-      if (this.interval) return this.stop();
-      this.interval = setInterval(() => {
-        this.counter = this.counter + 1;
-      }, 1000);;
-    },
-    stop() {
-      if (this.interval) clearInterval(this.interval);
-      this.interval = null;
-    },
-    clear() {
-      this.stop();
-      this.counter = 0;
-    }
-  }
+  },
+  beforeUnmount() {
+    clearInterval(this.timerInterval);
+    console.log(this.timerInterval);
+  },
 };
 </script>

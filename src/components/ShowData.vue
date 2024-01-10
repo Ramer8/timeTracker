@@ -9,10 +9,15 @@
     </div>
     <Timer
       v-if="state === 'online'"
-      :workedTime="info.data.workEntryIn.date"
+        :initialTime="initialTime"
+        :currentTime="currentTime"
+        :timerInterval="timerInterval"
+        :isPaused="isPaused"
+        @startTimer="startTimer"
+        @togglePause="togglePause"
     />
     <button
-      @click="changeState"
+      @click="changeState(); $emit('togglePause') "
       :class="[
         state === 'online' ? 'bg-orange-500' : 'bg-green-500 ',
         'rounded-full w-auto hover:text-gray-800 text-white px-12 py-1 mt-1'
@@ -39,21 +44,36 @@
 </template>
 <script>
 import Dropdowns from './Dropdowns.vue';
-import MyButton from './MyButton.vue';
+// import MyButton from './MyButton.vue';
 import Timer from './Timer.vue';
+
 export default {
   data() {
     return {
       newDate: '',
-      state: 'online'
+      state: 'online',
     };
   },
-  components: { Dropdowns, MyButton, Timer },
+  emits: ['startTimer', 'togglePause'],
+  components: {
+    Dropdowns, Timer,
+    // MyButton,
+  },
   props: {
     info: Object,
-    workedTime: String
+    workedTime: String,
+    initialTime: Number,
+    currentTime: Number,
+    timerInterval: Number,
+    isPaused: Boolean,
   },
   methods: {
+    startTimer() {
+      this.$emit('startTimer');
+    },
+    togglePause() {
+      this.$emit('togglePause');
+    },
     changeState() {
       if (this.state === 'online') {
         this.state = 'offline';
@@ -65,8 +85,8 @@ export default {
     formatDigit(value) {
       // Add leading zero if the value is less than 10
       return value < 10 ? `0${value}` : value;
-    }
-  }
+    },
+  },
 };
 </script>
 <style></style>

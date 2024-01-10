@@ -17,7 +17,7 @@
 export default {
   props: {
     status: String,
-    buttonClass: String
-  }
+    buttonClass: String,
+  },
 };
 </script>
