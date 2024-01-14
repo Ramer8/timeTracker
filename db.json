@@ -62,7 +62,7 @@
     "workEntryType": "string",
     "workEntryIn": {
       "origin": "string",
-      "date": "2020-01-01T10:00:00+01:00",
+      "date": "2024-01-14T11:01:19.210Z",
       "coordinates": {
         "latitude": 0,
         "longitude": 0
@@ -70,15 +70,15 @@
     },
     "workEntryOut": {
       "origin": "string",
-      "date": "2020-01-01T10:00:00+01:00",
+      "date": "2024-01-14T11:02:24.888Z",
       "coordinates": {
         "latitude": 0,
         "longitude": 0
       }
     },
-    "workedSeconds": 0,
-    "createdAt": "2020-01-01T10:00:00+01:00",
-    "updatedAt": "2020-01-01T10:00:00+01:00",
+    "workedSeconds": 1085,
+    "createdAt": "2024-01-14T11:01:19.210Z",
+    "updatedAt": "2024-01-14T11:02:24.888Z",
     "deletedAt": "2020-01-01T10:00:00+01:00"
   },
   "meta": {

@@ -1,11 +1,8 @@
 <template>
-  <div >
-    <div className="container mx-auto px-3 mt-3 text-center text-base text-gray-600">
-      {{
-        `${formatDigit(new Date(info.data.workEntryIn.date).getHours())}:${formatDigit(
-          new Date(info.data.workEntryIn.date).getMinutes()
-        )}:${formatDigit(new Date(info.data.workEntryIn.date).getSeconds())}`
-      }}
+  <div>
+    <div className="container mx-auto px-3 mt-3 text-center text-base text-gray-600"
+    >
+    {{ formattedTime(info.data.workedSeconds) }}
     </div>
     <Timer
       v-if="state === 'online'"
@@ -15,9 +12,9 @@
         :isPaused="isPaused"
         @startTimer="startTimer"
         @togglePause="togglePause"
-    />
-    <button
-      @click="changeState(); $emit('togglePause') "
+        />
+        <button
+        @click="changeState(); $emit('togglePause'); $emit('resetClock'); "
       :class="[
         state === 'online' ? 'bg-orange-500' : 'bg-green-500 ',
         'rounded-full w-auto hover:text-gray-800 text-white px-12 py-1 mt-1'
@@ -54,7 +51,7 @@ export default {
       state: 'online',
     };
   },
-  emits: ['startTimer', 'togglePause'],
+  emits: ['startTimer', 'togglePause', 'resetClock'],
   components: {
     Dropdowns, Timer,
     // MyButton,
@@ -68,11 +65,21 @@ export default {
     isPaused: Boolean,
   },
   methods: {
+    formattedTime(mySeconds) {
+      const hours = Math.floor(mySeconds / 3600);
+      const minutes = Math.floor(mySeconds / 60);
+      const seconds = Math.floor(mySeconds % 60);
+
+      return `${this.formatDigit(hours)}:${this.formatDigit(minutes)}:${this.formatDigit(seconds)}`;
+    },
     startTimer() {
       this.$emit('startTimer');
     },
     togglePause() {
       this.$emit('togglePause');
+    },
+    resetClock() {
+      this.$emit('resetClock');
     },
     changeState() {
       if (this.state === 'online') {
